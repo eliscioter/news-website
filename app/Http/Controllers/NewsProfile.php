@@ -14,7 +14,7 @@ class NewsProfile extends Controller
 
         
 
-        return view('index', ['data' => $data]);
+        return view('news_content', ['data' => $data]);
 
         // return Http::get('https://newsapi.org/v2/top-headlines?country=us&apiKey=618518684c3a4b948ce36d93ea6e72c9')->body();
     }
