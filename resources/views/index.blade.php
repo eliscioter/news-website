@@ -93,7 +93,7 @@
                         </div>
                     </div>
                     <span style="font-size: 0.5rem;">
-                        - source {{$data['articles'][$i]['source']['name']}}
+                        - {{$data['articles'][$i]['source']['name']}}
                     </span>
                 </div>
             @endfor
