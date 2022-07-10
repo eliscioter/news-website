@@ -64,8 +64,8 @@
 
 
 @section('content')
-            <h1>fuck</h1>
-        <!-- <section class="news-section">
+            
+        <section class="news-section">
             @for ($i = 0; $i < $data['totalResults']; $i++)
                 <div class="card">
                     <div class="card-title">
@@ -95,5 +95,5 @@
                     </span>
                 </div>
             @endfor
-        </section> -->
+        </section>
 @endsection

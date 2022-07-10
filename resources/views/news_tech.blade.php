@@ -64,8 +64,8 @@
 
 
 @section('content')
-        <h1>hello</h1>
-    <!-- <section class="news-section">
+       
+    <section class="news-section">
         @for ($i = 0; $i < 10; $i++)
             <div class="card">
                 <div class="card-title">
@@ -95,5 +95,5 @@
                 </span>
             </div>
         @endfor
-    </section> -->
+    </section>
 @endsection
