@@ -14,7 +14,9 @@ use App\Http\Controllers\NewsProfile;
 |
 */
 
-Route::get('/', [NewsProfile::class, 'list']);
+Route::get('/', [NewsProfile::class, 'headlineList']);
+
+Route::get('news_tech', [NewsProfile::class, 'techList']);
 
 // Route::get('/newsProfile',[NewsProfile::class, 'list']);
 
