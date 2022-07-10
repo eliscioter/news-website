@@ -22,18 +22,15 @@
                 padding: 10px;
                 
             }
-            .card-img{
-                max-height: auto;
-                width: 50%;
+            .card-img {
+                max-width: 25%;
             }
             .news-img {
                 max-height: 100%;
-                width: 100%;
+                max-width: 100%;
                 padding: 5px;
             }
-            .news-img img {
-                margin: 0;
-            }
+            
 
             @media (min-width: 768px) {
                 .card-content {
@@ -67,7 +64,8 @@
 
 
 @section('content')
-        <section class="news-section">
+            <h1>fuck</h1>
+        <!-- <section class="news-section">
             @for ($i = 0; $i < $data['totalResults']; $i++)
                 <div class="card">
                     <div class="card-title">
@@ -97,5 +95,5 @@
                     </span>
                 </div>
             @endfor
-        </section>
+        </section> -->
 @endsection

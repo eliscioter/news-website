@@ -17,10 +17,27 @@
         <style>
             body {
                 color: #fff;
+                display: grid;
+                grid-template-areas: 
+                    'header'
+                    'main'
+                    'footer';
+            }
+            .navbar {
+                grid-area: header;
+                border-bottom: 1px solid grey;
+            }
+            main {
+                grid-area: main;
+            }
+            footer {
+                grid-area: footer;
+                text-align: center;
+                padding: 20px 0 20px;
+                border-top: 1px solid grey;
             }
             nav ul {
                 list-style-type: none;
-                display: flex;
             }
             nav li {
                 padding: 0 10px 0;
@@ -28,24 +45,43 @@
             nav a {
                 text-decoration: none;
             }
+            nav .pages {
+                float: left;
+                text-align: center;
+                display: inline-flex;
+                padding-left: 20px
+            }
+            nav .signIn {
+                float: right;
+                text-align: center;
+                padding-right: 20px;
+            }
         </style>
 
         <!-- css -->
         @yield('css')
     <head>
     <body>
-        <nav>
-            <ul>
-                <li><a href="">Home</a> </li>
-                <li><a href="">Science news</a> </li>
+        <nav class="navbar">
+            <ul class="pages">
+                <li><a href="/">Home</a> </li>
+                <li><a href="/news_tech">Tech news</a> </li>
                 <li><a href="">Feedback</a> </li>
+                
+            </ul>
+            <ul class="signIn">
+                <li class="signIn-link"><a href="">Sign in</a></li>
             </ul>
         </nav>
         <main>
             @yield('content')
         </main>
         <footer>
-            2022
+            <p>News from News API</p>
+            @php
+                $ldate = date('d-m-Y');
+                echo $ldate;
+            @endphp
         </footer>
     </body>
 </html
