@@ -52,11 +52,9 @@
                 width: 100%;
             }
             .card-img {
-                width: 100%;
+                max-width: 100%;
             }
-            .news-img {
-                width: 100%;
-            }
+           
         }
     </style>
 
