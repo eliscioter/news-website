@@ -16,25 +16,47 @@
         
         <style>
             body {
+                overflow-x: hidden;
+                font-family: 'Nunito', sans-serif;
+                background-color: #010b13;
                 color: #fff;
                 display: grid;
                 grid-template-areas: 
                     'header'
                     'main'
                     'footer';
+                
+            }
+            body::-webkit-scrollbar {
+                width: 0.3em;
+                height: 0.3em;
+            }
+            
+            body::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            }
+            
+            body::-webkit-scrollbar-thumb {
+                background-color: darkgrey;
+                outline: 1px solid slategrey;
+                border-radius: 5px;
+
             }
             .navbar {
                 grid-area: header;
                 border-bottom: 1px solid grey;
+                height: 9vh;
             }
             main {
                 grid-area: main;
+                min-height: 71vh;
             }
             footer {
                 grid-area: footer;
                 text-align: center;
                 padding: 20px 0 20px;
                 border-top: 1px solid grey;
+                height: 20vh;
             }
             nav ul {
                 list-style-type: none;
@@ -66,7 +88,7 @@
             <ul class="pages">
                 <li><a href="/">Home</a> </li>
                 <li><a href="/news_tech">Tech news</a> </li>
-                <li><a href="">Feedback</a> </li>
+                <li><a href="/feedback">Feedback</a> </li>
                 
             </ul>
             <ul class="signIn">
@@ -77,10 +99,11 @@
             @yield('content')
         </main>
         <footer>
-            <p>News from News API</p>
+            <p>Data from News API</p>
+            
             @php
                 $ldate = date('d-m-Y');
-                echo $ldate;
+                echo "<time datetime='$ldate'>" . $ldate . "</time>";
             @endphp
         </footer>
     </body>
