@@ -5,7 +5,7 @@
     <style>
         .feedback-container {
             display: grid;
-            grid-template-columns: 1fr 3fr;
+            grid-template-columns: 3fr 1fr;
             padding: 40px;
         }
         .container {
@@ -53,9 +53,7 @@
             border-radius: 5px;
             float: right;
         }
-        article {
-            padding: 0 40px 40px 40px;
-        }
+        
         .card {
             border: 1px solid grey;
             border-radius: 10px;
@@ -70,6 +68,13 @@
         @media (max-width: 992px) {
             .feedback-container {
                 grid-template-columns: 1fr;
+                padding: 10px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            article {
+                padding: 0 40px 40px 40px;
             }
         }
     </style>
@@ -78,27 +83,7 @@
 @section('content')
 
     <section class="feedback-container">
-
-        <div class="container">
-            <div class="col">
-                <h1>Join the conversation!</h1>
-                <form method="post" class="form-feedback" id="comment-form">
-                    <label for="name">Name:</label>
-                    <input type="text" placeholder="John Doe">
-                    <label for="subject">Subject:</label>
-                    <input type="text" placeholder="Current news"> 
-                </form>
-                <label for="comment">Comment:</label> <br><br>
-                <textarea name="comment" form="comment-form" rows="10" placeholder="Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                        Doloremque voluptatum enim quam eaque nemo corporis commodi ad natus, veniam alias, 
-                        praesentium voluptas. Blanditiis error ipsam expedita dolore quo cumque quibusdam 
-                        necessitatibus magni, mollitia vero at culpa temporibus, labore debitis nesciunt, 
-                        omnis dolorem! Accusamus unde illum id quaerat magnam deserunt asperiores?"></textarea> <br>
-                <input type="submit" form="comment-form">
-            </div>
-        </div>
-
-        <article>
+    <article>
             <h1>Comments</h1>
             <div class="card">
                 <h3>Japan</h3>
@@ -135,6 +120,27 @@
             </div>
 
         </article>
+
+        <div class="container">
+            <div class="col">
+                <h1>Join the conversation!</h1>
+                <form method="post" class="form-feedback" id="comment-form">
+                    <label for="name">Name:</label>
+                    <input type="text" placeholder="John Doe">
+                    <label for="subject">Subject:</label>
+                    <input type="text" placeholder="Current news"> 
+                </form>
+                <label for="comment">Comment:</label> <br><br>
+                <textarea name="comment" form="comment-form" rows="10" placeholder="Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                        Doloremque voluptatum enim quam eaque nemo corporis commodi ad natus, veniam alias, 
+                        praesentium voluptas. Blanditiis error ipsam expedita dolore quo cumque quibusdam 
+                        necessitatibus magni, mollitia vero at culpa temporibus, labore debitis nesciunt, 
+                        omnis dolorem! Accusamus unde illum id quaerat magnam deserunt asperiores?"></textarea> <br>
+                <input type="submit" form="comment-form">
+            </div>
+        </div>
+
+        
 
     </section>
 
