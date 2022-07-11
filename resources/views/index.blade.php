@@ -42,10 +42,17 @@
                 border-radius: 5px;
 
             }
+            header {
+                margin-bottom: 5em;
+            }
             .navbar {
                 grid-area: header;
                 border-bottom: 1px solid grey;
                 height: 9vh;
+                position: fixed;
+                width: 100%;
+                z-index: 3;
+                background-color: #010b13;
             }
             main {
                 grid-area: main;
@@ -68,33 +75,160 @@
                 text-decoration: none;
             }
             nav .pages {
-                float: left;
-                text-align: center;
                 display: inline-flex;
-                padding-left: 20px
+                padding-left: 20px;
             }
             nav .signIn {
                 float: right;
                 text-align: center;
                 padding-right: 20px;
             }
+            
+            @media (min-width: 768px) {
+                .menu-btn {
+                display: none;
+                }
+                .signIn-link {
+                    display: none;
+                }
+            }
+            @media (max-width: 768px) {
+                .signIn {
+                    display: none;
+                }
+                nav .pages {
+                    display: block;
+                    float: right;
+                }
+                a {
+                    color: #fff;
+                }
+
+                .navbar ul {
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    overflow: hidden;
+                    background-color: #0D2C44;
+                }
+                .navbar li a {
+                    display: block;
+                    padding: 20px 20px 20px 20px;
+                    text-decoration: none;
+                    text-align: right;
+                }
+
+                .navbar li a:hover,
+                .navbar .menu-btn:hover {
+                    background-color: #f4f4f4;
+                }
+
+                .navbar .logo {
+                    display: block;
+                    float: left;
+                    font-size: 2em;
+                    padding: 10px 20px;
+                    text-decoration: none;
+                }
+
+                /* menu */
+
+                .navbar .pages {
+                    clear: both;
+                    max-height: 0;
+                    transition: max-height .2s ease-out;
+                }
+
+                /* menu icon */
+
+                .navbar .menu-icon {
+                    cursor: pointer;
+                    float: right;
+                    padding: 28px 20px;
+                    position: relative;
+                    user-select: none;
+                }
+
+                .navbar .menu-icon .navicon {
+                    background: #fff;
+                    display: block;
+                    height: 2px;
+                    position: relative;
+                    transition: background .2s ease-out;
+                    width: 18px;
+                    }
+
+                .navbar .menu-icon .navicon:before,
+                .navbar .menu-icon .navicon:after {
+                    background: #fff;
+                    content: '';
+                    display: block;
+                    height: 100%;
+                    position: absolute;
+                    transition: all .2s ease-out;
+                    width: 100%;
+                }
+
+                .navbar .menu-icon .navicon:before {
+                    top: 5px;
+                }
+
+                .navbar .menu-icon .navicon:after {
+                    top: -5px;
+                }
+
+                /* menu btn */
+
+                .navbar .menu-btn {
+                    display: none;
+                }
+
+                .navbar .menu-btn:checked ~ .pages {
+                    max-height: 50vh;
+                }
+
+                .navbar .menu-btn:checked ~ .menu-icon .navicon {
+                    background: transparent;
+                }
+
+                .navbar .menu-btn:checked ~ .menu-icon .navicon:before {
+                    transform: rotate(-45deg);
+                }
+
+                .navbar .menu-btn:checked ~ .menu-icon .navicon:after {
+                    transform: rotate(45deg);
+                }
+
+                .navbar .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+                .navbar .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+                    top: 0;
+                }
+            }
+           
         </style>
 
-        <!-- css -->
+        <!-- other page's css -->
         @yield('css')
     <head>
     <body>
-        <nav class="navbar">
-            <ul class="pages">
-                <li><a href="/">Home</a> </li>
-                <li><a href="/news_tech">Tech news</a> </li>
-                <li><a href="/feedback">Feedback</a> </li>
+        <header>
+            <nav class="navbar">
+                <input class="menu-btn" type="checkbox" id="menu-btn" />
+                <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+                    <ul class="pages">
+                        <li><a href="/">Home</a> </li>
+                        <li><a href="/news_tech">Tech news</a> </li>
+                        <li><a href="/feedback">Feedback</a> </li>
+                        <li class="signIn-link"><a href="">Sign in</a></li>
+                    </ul>
+                    <ul class="signIn">
+                        <li><a href="">Sign in</a></li>
+                    </ul>
                 
-            </ul>
-            <ul class="signIn">
-                <li class="signIn-link"><a href="">Sign in</a></li>
-            </ul>
-        </nav>
+            </nav>
+        </header>
+        
+       
         <main>
             @yield('content')
         </main>
