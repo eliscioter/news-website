@@ -26,4 +26,8 @@ class NewsProfile extends Controller
         return view('news_tech', ['data' => $data]);
         // return view('news_tech');
     }
+
+    public function feedbackList() {
+        return view('feedback');
+    }
 }

@@ -18,6 +18,9 @@ Route::get('/', [NewsProfile::class, 'headlineList']);
 
 Route::get('news_tech', [NewsProfile::class, 'techList']);
 
+Route::get('feedback', [NewsProfile::class, 'feedbackList']);
+
+
 // Route::get('/newsProfile',[NewsProfile::class, 'list']);
 
 // Route::get('/newsProfile', function () {
