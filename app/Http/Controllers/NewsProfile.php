@@ -30,4 +30,11 @@ class NewsProfile extends Controller
     public function feedbackList() {
         return view('feedback');
     }
+
+    public function sign_in_page() {
+        return view('sign_in');
+    }
+    public function register_page() {
+        return view('register');
+    }
 }

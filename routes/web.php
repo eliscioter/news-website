@@ -20,6 +20,11 @@ Route::get('news_tech', [NewsProfile::class, 'techList']);
 
 Route::get('feedback', [NewsProfile::class, 'feedbackList']);
 
+Route::get('sign_in', [NewsProfile::class, 'sign_in_page']);
+
+Route::get('register', [NewsProfile::class, 'register_page']);
+
+
 
 // Route::get('/newsProfile',[NewsProfile::class, 'list']);
 
