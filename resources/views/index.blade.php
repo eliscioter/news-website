@@ -25,7 +25,7 @@
                     'header'
                     'main'
                     'footer';
-                
+                min-height: 100vh;
             }
             body::-webkit-scrollbar {
                 width: 0.3em;
@@ -48,7 +48,6 @@
             .navbar {
                 grid-area: header;
                 border-bottom: 1px solid grey;
-                height: 9vh;
                 position: fixed;
                 width: 100%;
                 z-index: 3;
@@ -56,14 +55,13 @@
             }
             main {
                 grid-area: main;
-                min-height: 71vh;
             }
             footer {
                 grid-area: footer;
                 text-align: center;
-                padding: 20px 0 20px;
                 border-top: 1px solid grey;
-                height: 20vh;
+                margin-top: auto;
+                padding: 5px 0 5px;
             }
             nav ul {
                 list-style-type: none;
@@ -219,10 +217,10 @@
                         <li><a href="/">Home</a> </li>
                         <li><a href="/news_tech">Tech news</a> </li>
                         <li><a href="/feedback">Feedback</a> </li>
-                        <li class="signIn-link"><a href="">Sign in</a></li>
+                        <li class="signIn-link"><a href="/sign_in">Sign in</a></li>
                     </ul>
                     <ul class="signIn">
-                        <li><a href="">Sign in</a></li>
+                        <li><a href="/sign_in">Sign in</a></li>
                     </ul>
                 
             </nav>
