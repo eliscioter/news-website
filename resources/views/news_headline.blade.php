@@ -46,6 +46,9 @@
             }
         }
         @media (max-width: 576px) {
+            .news-section {
+                padding: 5px;
+            }
             .card {
                 width: 100%;
             }
