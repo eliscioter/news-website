@@ -16,11 +16,11 @@
             align-items: center;
             margin: 10px auto 10px auto;
             padding: 10px;
-            height: 70vh;
+            height: auto 70vh;
         }
        
         .content > div {
-            height: 100%;
+            height: auto 100%;
             border: 1px solid grey;
             border-radius: 10px;
             padding: 10px;
@@ -33,14 +33,17 @@
             display: grid;
         }
         .form-input > input {
-            padding: 5px;
+            padding: 10px;
+            border-radius: 10px;
         }
         .form-submit {
-            padding: 20px;
-            
+            padding: 0 20px 50px 20px;
+        }
+        .form-submit > input[type="submit"] {
+            border-radius: 5px;
         }
         .form-submit > input {
-            padding: 8px;
+            padding: 10px;
             border-radius: 10px;
             background-color: grey;
             color: white;
@@ -48,6 +51,9 @@
         .register-link {
             padding: 20px;
             font-size: 0.8em;
+        }
+        .error-message {
+            color: red;
         }
         @media (min-width: 992px) {
             .content > div {
@@ -69,14 +75,21 @@
             <div>
             <h1>Sign in</h1>
 
-                <form action="">
+                <form action="/users/authenticate" method="POST">
+                    @csrf
                     <div class="form-input">
                         <label for="username">Username:</label>
-                        <input type="text">
+                        <input type="text" name="username">
+                        @error('username')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="form-input">
                         <label for="password">Password:</label>
-                        <input type="password" >
+                        <input type="password" name="password" id="password">
+                        @error('password')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="form-submit">
                         <input type="submit" style="float: right">

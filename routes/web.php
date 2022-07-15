@@ -3,6 +3,8 @@ use Illuminate\Support\Facades\Http;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsProfile;
+use App\Http\Controllers\UserProfile;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,11 +22,15 @@ Route::get('news_tech', [NewsProfile::class, 'techList']);
 
 Route::get('feedback', [NewsProfile::class, 'feedbackList']);
 
-Route::get('sign_in', [NewsProfile::class, 'sign_in_page']);
+Route::get('sign_in', [UserProfile::class, 'sign_in_page']);
 
-Route::get('register', [NewsProfile::class, 'register_page']);
+Route::get('register', [UserProfile::class, 'register_page']);
 
+Route::post('/users', [UserProfile::class, 'store']);
 
+Route::post('/sign_out', [UserProfile::class, 'sign_out']);
+
+Route::post('/users/authenticate', [UserProfile::class, 'authenticate']);
 
 // Route::get('/newsProfile',[NewsProfile::class, 'list']);
 

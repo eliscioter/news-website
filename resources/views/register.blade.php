@@ -16,11 +16,11 @@
             align-items: center;
             margin: 10px auto 10px auto;
             padding: 10px;
-            height: 100vh;
+            height: auto 100vh;
         }
        
         .content > div {
-            height: 100%;
+            height: atuo 100%;
             border: 1px solid grey;
             border-radius: 10px;
             padding: 10px;
@@ -32,21 +32,24 @@
             display: grid;
         }
         .form-input > input {
-            padding: 5px;
+            padding: 10px;
+            border-radius: 10px;
         }
         .form-submit {
-            padding: 20px;
-            
+            padding: 0 20px 50px 20px;
         }
-        .form-submit > input {
-            padding: 8px;
-            border-radius: 10px;
+        .form-submit > input[type="submit"] {
+            padding: 10px;
+            border-radius: 5px;
             background-color: grey;
             color: white;
         }
         .register-link {
             padding: 20px;
             font-size: 0.8em;
+        }
+        .error-message {
+            color: red;
         }
         @media (min-width: 992px) {
             .content > div {
@@ -68,22 +71,37 @@
             <div>
             <h1>Registration</h1>
 
-                <form action="">
+                <form action="/users" method="POST">
+                    @csrf
                     <div class="form-input">
                         <label for="email">Email:</label>
-                        <input type="email">
+                        <input type="email" name="email" id="email" value={{old('email')}}>
+
+                        @error('email')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
                     </div>
+                   
                     <div class="form-input">
                         <label for="username">Username:</label>
-                        <input type="text">
+                        <input type="text" name="username" id="username" value={{old('username')}}>
+                        @error('username')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="form-input">
                         <label for="password">Password:</label>
-                        <input type="password" >
+                        <input type="password" name="password" id="password">
+                        @error('password')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="form-input">
                         <label for="confirm-pass">Confirm password:</label>
-                        <input type="password" >
+                        <input type="password" name="password_confirmation" id="password_confirmation" >
+                        @error('password_confirmation')
+                            <p class="error-message">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="form-submit">
                         <input type="submit" style="float: right">
