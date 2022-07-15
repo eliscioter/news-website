@@ -52,6 +52,7 @@
                 width: 100%;
                 z-index: 3;
                 background-color: #010b13;
+                
             }
             main {
                 grid-area: main;
@@ -80,8 +81,18 @@
                 float: right;
                 text-align: center;
                 padding-right: 20px;
+                display: flex;
             }
-            
+            nav .signIn > li > form > button {
+                background-color: red;
+            }
+            .sign-out-btn {
+                border-radius: 5px;
+                padding: 10px;
+                background-color: #778899;
+                color: #fff;
+                cursor: pointer;
+            }
             @media (min-width: 768px) {
                 .menu-btn {
                 display: none;
@@ -92,7 +103,7 @@
             }
             @media (max-width: 768px) {
                 .signIn {
-                    display: none;
+                    visibility: hidden;
                 }
                 nav .pages {
                     display: block;
@@ -215,14 +226,55 @@
                 <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
                     <ul class="pages">
                         <li><a href="/">Home</a> </li>
+                        @auth
                         <li><a href="/news_tech">Tech news</a> </li>
                         <li><a href="/feedback">Feedback</a> </li>
+                        <div>
+                            <form action="/sign_out" method="POST">
+                                @csrf
+                                <li class="signIn-link">
+                                    <button type="submit">
+                                        <span>Sign out</span>
+                                    </button>
+                                </li>
+                            </form>
+                        </div>
+                        
+                    @else
                         <li class="signIn-link"><a href="/sign_in">Sign in</a></li>
+                    @endauth
                     </ul>
+
+                    @auth
+                    <div class="signIn">
+                        <h3 style="font-size: 1em; color: red; padding: 0 20px 0 20px;">Hi {{auth()->user()->username}}!</h3>
+                        <div style="display: grid; place-items: center; padding: 0 20px 0 20px;">
+                            <form action="/sign_out" method="POST">
+                                @csrf
+                                <button type="submit" class="sign-out-btn">
+                                    <span>Sign out</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- <ul class="signIn" style="background-color: blue">
+                        
+                        <li class="signIn-link">
+                            <form action="/" method="post">
+                                @csrf
+                                <button type="submit">
+                                    <i style="color: violet;">Sign out</i>
+                                </button>
+                            </form>
+
+                        </li>
+                    </ul> -->
+                    @else
                     <ul class="signIn">
                         <li><a href="/sign_in">Sign in</a></li>
                     </ul>
-                
+                    @endauth
             </nav>
         </header>
         
