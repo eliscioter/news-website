@@ -49,7 +49,7 @@
         .col > input[type="submit"] {
             background-color: #778899;
             color: #fff;
-            padding: 5px;
+            padding: 10px;
             border-radius: 5px;
             float: right;
         }
@@ -125,8 +125,6 @@
             <div class="col">
                 <h1>Join the conversation!</h1>
                 <form method="post" class="form-feedback" id="comment-form">
-                    <label for="name">Name:</label>
-                    <input type="text" placeholder="John Doe">
                     <label for="subject">Subject:</label>
                     <input type="text" placeholder="Current news"> 
                 </form>
