@@ -1,9 +1,11 @@
 <?php
-use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\NewsProfile;
 use App\Http\Controllers\UserProfile;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CommentProfile;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,11 +28,18 @@ Route::get('sign_in', [UserProfile::class, 'sign_in_page']);
 
 Route::get('register', [UserProfile::class, 'register_page']);
 
+Route::get('feedback', function () {
+    $comments = DB::table('comments')->select('username','subject', 'comment_body')->get();
+    return view('/feedback', compact('comments'));
+});
+
 Route::post('/users', [UserProfile::class, 'store']);
 
 Route::post('/sign_out', [UserProfile::class, 'sign_out']);
 
 Route::post('/users/authenticate', [UserProfile::class, 'authenticate']);
+
+Route::post('comment', [CommentProfile::class, 'commentList']);
 
 // Route::get('/newsProfile',[NewsProfile::class, 'list']);
 

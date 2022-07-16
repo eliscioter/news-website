@@ -85,51 +85,30 @@
     <section class="feedback-container">
     <article>
             <h1>Comments</h1>
-            <div class="card">
-                <h3>Japan</h3>
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                    Doloremque voluptatum enim quam eaque nemo corporis commodi ad natus, veniam alias, 
-                    praesentium voluptas. Blanditiis error ipsam expedita dolore quo cumque quibusdam 
-                    necessitatibus magni, mollitia vero at culpa temporibus, labore debitis nesciunt, 
-                    omnis dolorem! Accusamus unde illum id quaerat magnam deserunt asperiores?
-                </p>
-                <span class="author">- John Doe</span>
-            </div>
-            <div class="card">
-                <h3>Sri Lanka</h3>
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                    Doloremque voluptatum enim quam eaque nemo corporis commodi ad natus, veniam alias, 
-                    praesentium voluptas. Blanditiis error ipsam expedita dolore quo cumque quibusdam 
-                    necessitatibus magni, mollitia vero at culpa temporibus, labore debitis nesciunt, 
-                    omnis dolorem! Accusamus unde illum id quaerat magnam deserunt asperiores?
-                </p>
-                <span class="author">- Jane Doe</span>
-            </div>
-            <div class="card">
-                <h3>Facebook</h3>
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                    Doloremque voluptatum enim quam eaque nemo corporis commodi ad natus, veniam alias, 
-                    praesentium voluptas. Blanditiis error ipsam expedita dolore quo cumque quibusdam 
-                    necessitatibus magni, mollitia vero at culpa temporibus, labore debitis nesciunt, 
-                    omnis dolorem! Accusamus unde illum id quaerat magnam deserunt asperiores?
-                </p>
-                <span class="author">- John Smith</span>
-            </div>
+            @foreach ($comments as $item)
+                <div class="card">
+                    <h3> {{ $item->subject }} </h3>
+                    <p>
+                        {{ $item->comment_body}}
+                    </p>
+                    <span class="author">- {{ $item->username }}</span>
+                </div>
+            
+            
+            @endforeach
 
         </article>
 
         <div class="container">
             <div class="col">
                 <h1>Join the conversation!</h1>
-                <form method="post" class="form-feedback" id="comment-form">
+                <form action=" {{ url('comment') }}" method="post" class="form-feedback" id="comment-form">
+                    @csrf
                     <label for="subject">Subject:</label>
-                    <input type="text" placeholder="Current news"> 
+                    <input name="subject" type="text" placeholder="Current news"> 
                 </form>
                 <label for="comment">Comment:</label> <br><br>
-                <textarea name="comment" form="comment-form" rows="10" placeholder="Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                <textarea name="comment_body" form="comment-form" rows="10" placeholder="Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
                         Doloremque voluptatum enim quam eaque nemo corporis commodi ad natus, veniam alias, 
                         praesentium voluptas. Blanditiis error ipsam expedita dolore quo cumque quibusdam 
                         necessitatibus magni, mollitia vero at culpa temporibus, labore debitis nesciunt, 
